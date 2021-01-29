@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 //https://www.youtube.com/watch?v=vbILVirFV3A
+// Fird Person Controller
 public class FPC : MonoBehaviour
 {
     [SerializeField] Transform cam;
@@ -18,12 +19,15 @@ public class FPC : MonoBehaviour
     void Awake()
     {
         Controller = GetComponent<CharacterController>();
+
+        Transform cameraXform = this.gameObject.transform.GetChild(0); // camera
+        cameraXform.position += Vector3.forward * -5.0f;
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
         Move = context.ReadValue<Vector2>();
-        Debug.Log(Move);
+        //Debug.Log(Move);
     }
 
     public void OnRotationX(InputAction.CallbackContext context)
